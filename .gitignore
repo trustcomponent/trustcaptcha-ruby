@@ -1,0 +1,87 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# Ignore bundler config.
+/.bundle
+
+# Ignore the default SQLite database.
+*.sqlite3
+*.sqlite3-journal
+
+# Ignore all logfiles and tempfiles.
+log/*
+tmp/*
+!log/.keep
+!tmp/.keep
+
+# Ignore pidfiles, but keep the directory.
+tmp/pids/*
+!tmp/pids/
+!tmp/pids/.keep
+
+# Ignore uploaded files in development.
+storage/*
+!storage/.keep
+
+# Ignore database.yml, which may contain sensitive information.
+config/database.yml
+config/master.key
+config/credentials.yml.enc
+
+# Ignore Byebug command history file.
+.byebug_history
+
+# Ignore node_modules
+node_modules/
+
+# Ignore Mac OS X files
+*.DS_Store
+
+# Ignore IntelliJ IDEA files
+.idea/
+*.iml
+
+# Ignore coverage directory used by tools like SimpleCov
+coverage/
+
+# Ignore gem and gemspec files created by Bundler
+*.gem
+Gemfile.lock
+
+# Ignore RubyMine specific files
+*.ipr
+*.iws
+.idea/
+
+# Ignore other editor specific files
+*~
+*.swp
+.project
+.metadata
+tmp/**/*
+
+# Ignore dump files from ActiveRecord
+dump.rdb
+
+# Ignore application config secrets
+config/secrets.yml
+
+# Ignore files from test databases
+db/test.sqlite3
+db/test.sqlite3-journal
+
+# Ignore Rails specific files
+public/system
+public/uploads
+public/assets
+public/packs
+node_modules/
+yarn-error.log
+.byebug_history
+.rspec
+
+# Ignore dotenv environment variables file
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
