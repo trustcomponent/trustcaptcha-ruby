@@ -26,23 +26,6 @@ build:
     - branches
     - tags
 
-#publish:
-#  image: $RUBY_IMAGE
-#  stage: publish
-#  tags:
-#    - build
-#  script:
-#    - sed -i "s#\"https://rubygems.org\"#\"${CI_SERVER_URL}/api/v4/projects/${CI_PROJECT_ID}/packages/rubygems\"#" $GEM_NAME.gemspec
-#    - gem build $GEM_NAME.gemspec
-#    - mkdir ~/.gem
-#    - echo "---" > ~/.gem/credentials
-#    - |
-#      echo "${CI_SERVER_URL}/api/v4/projects/${CI_PROJECT_ID}/packages/rubygems: '${CI_JOB_TOKEN}'" >> ~/.gem/credentials
-#    - chmod 0600 ~/.gem/credentials
-#    - gem push ./$GEM_NAME-*.gem --host ${CI_SERVER_URL}/api/v4/projects/${CI_PROJECT_ID}/packages/rubygems
-#  only:
-#    - branches
-
 publish-to-rubygems:
   image: $RUBY_IMAGE
   stage: publish-to-rubygems
@@ -59,6 +42,6 @@ publish-to-rubygems:
       EOF
     - chmod 0600 ~/.gem/credentials
     - cat ~/.gem/credentials
-    - gem push ./$GEM_NAME-${CI_COMMIT_TAG}.gem
+    - gem push ./*.gem
   only:
     - tags
