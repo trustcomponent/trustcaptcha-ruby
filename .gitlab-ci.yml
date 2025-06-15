@@ -42,6 +42,6 @@ publish-to-rubygems:
       EOF
     - chmod 0600 ~/.gem/credentials
     - cat ~/.gem/credentials
-    - gem push ./$GEM_NAME-${CI_COMMIT_TAG}*.gem
+    - gem push ./$GEM_NAME-${CI_COMMIT_TAG}.gem
   only:
     - tags
