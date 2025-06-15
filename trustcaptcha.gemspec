@@ -1,5 +1,5 @@
 Gem::Specification.new do |spec|
-  spec.name          = "trustcaptcha-ruby"
+  spec.name          = "trustcaptcha"
   spec.version       = "0.1.0" # will be set in the pieline
   spec.authors       = ["TrustComponent"]
   spec.email         = ["mail@trustcomponent.com"]

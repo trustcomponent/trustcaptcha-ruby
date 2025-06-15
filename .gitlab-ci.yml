@@ -33,7 +33,6 @@ build:
 #    - build
 #  script:
 #    - sed -i "s#\"https://rubygems.org\"#\"${CI_SERVER_URL}/api/v4/projects/${CI_PROJECT_ID}/packages/rubygems\"#" $GEM_NAME.gemspec
-#    - cat trustcaptcha-ruby.gemspec
 #    - gem build $GEM_NAME.gemspec
 #    - mkdir ~/.gem
 #    - echo "---" > ~/.gem/credentials
