@@ -5,7 +5,7 @@ stages:
 
 variables:
   RUBY_IMAGE: "ruby:3.1.2"
-  GEM_NAME: "trustcaptcha-ruby"
+  GEM_NAME: "trustcaptcha"
 
 before_script:
   - gem install bundler
