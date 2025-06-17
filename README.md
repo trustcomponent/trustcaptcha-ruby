@@ -50,7 +50,7 @@ end
 
 3. Act on the result
 ```ruby
-# Do something with the verification result
+# Act on the verification result
 if !verification_result.verification_passed || verification_result.score > 0.5
   puts 'Verification failed or bot score > 0.5 – possible automated request.'
 end
