@@ -14,5 +14,7 @@ class VerificationToken
     json_string = Base64.decode64(base64_string)
     data = JSON.parse(json_string)
     new(data['apiEndpoint'], data['verificationId'])
+  rescue StandardError => e
+    raise e
   end
 end

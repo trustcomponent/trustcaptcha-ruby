@@ -25,13 +25,20 @@ class CaptchaManager
   end
 
   def self.fetch_verification_result(verification_token, access_token)
-    url = URI("#{verification_token.api_endpoint}/verifications/#{verification_token.verification_id}/assessments")
+    url = URI("https://api.trustcomponent.com/verifications/#{verification_token.verification_id}/assessments")
     headers = {
       "tc-authorization" => access_token,
       "tc-library-language" => "ruby",
       "tc-library-version" => "2.0"
     }
-    response = Net::HTTP.get_response(url, headers)
+
+    http = Net::HTTP.new(url.host, url.port)
+    http.use_ssl = true
+    http.open_timeout = 3
+    http.read_timeout = 5
+
+    request = Net::HTTP::Get.new(url.request_uri, headers)
+    response = http.request(request)
 
     case response.code.to_i
     when 403
