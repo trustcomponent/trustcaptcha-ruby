@@ -1,19 +1,19 @@
 require 'json'
-require 'securerandom'
 require 'base64'
 
 class VerificationToken
-  attr_reader :api_endpoint, :verification_id
+  attr_reader :verification_id, :client_failover
 
-  def initialize(api_endpoint, verification_id)
-    @api_endpoint = api_endpoint
+  def initialize(verification_id, client_failover = false)
     @verification_id = verification_id
+    @client_failover = client_failover
   end
 
   def self.from_base64(base64_string)
     json_string = Base64.decode64(base64_string)
     data = JSON.parse(json_string)
-    new(data['apiEndpoint'], data['verificationId'])
+    raise StandardError, 'Missing verificationId' if data['verificationId'].nil?
+    new(data['verificationId'], data['clientFailover'] == true)
   rescue StandardError => e
     raise e
   end

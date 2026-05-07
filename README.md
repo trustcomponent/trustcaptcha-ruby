@@ -32,14 +32,17 @@ Need a walkthrough? See the [Ruby integration guide](https://www.trustcomponent.
 
 1. Install the dependency
 ```bash
-gem install trustcaptcha-ruby
+gem install trustcaptcha -v '~> 3.0'
 ```
 
 2. Retrieve the verification result
 ```ruby
+require 'trustcaptcha/trust_captcha'
+
 # Retrieving the verification result
-begin 
-  verification_result = CaptchaManager.get_verification_result('<your_secret_key>', '<verification_token_from_your_client>')
+begin
+  trust_captcha = TrustCaptcha.new('<your_api_key>')
+  verification_result = trust_captcha.get_verification_result('<verification_token_from_your_client>')
 rescue StandardError => e
   # Fetch verification result failed - handle error
   puts "Failed to fetch verification result: #{e.class} - #{e.message}"
