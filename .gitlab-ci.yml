@@ -18,7 +18,7 @@ build:
     - build
   script:
     - gem build $GEM_NAME.gemspec
-    - ruby tests/test_captcha_manager.rb
+    - ruby -Ilib -Itests tests/test_trust_captcha.rb
   artifacts:
     paths:
       - ./*.gem
