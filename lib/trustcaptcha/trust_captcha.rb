@@ -29,7 +29,7 @@ class TrustCaptcha
                  read_timeout_s: DEFAULT_READ_TIMEOUT_S,
                  proxy: nil)
     raise ArgumentError, 'api_key must not be empty' if api_key.nil? || api_key.empty?
-    @api_key = api_key
+    @api_key = api_key.strip
     @api_host = api_host
     @connect_timeout_s = connect_timeout_s
     @read_timeout_s = read_timeout_s
@@ -59,7 +59,7 @@ class TrustCaptcha
       request = Net::HTTP::Get.new(url.request_uri, headers)
       http.request(request)
     rescue SocketError, Errno::ECONNREFUSED, Errno::EHOSTUNREACH, Errno::ENETUNREACH, Net::OpenTimeout, Net::ReadTimeout, Errno::ETIMEDOUT
-      raise ServerUnreachableException, 'Could not reach the TrustCaptcha server. This is a high-trust failover signal — your backend was unable to contact our servers.'
+      raise ServerUnreachableException, 'Could not reach the TrustCaptcha server. Please check your network connection and consider implementing a failover mechanism.'
     end
 
     case response.code.to_i
